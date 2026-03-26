@@ -47,17 +47,17 @@ function AppointmentForm({ refreshAppointments }) {
                 onChange={(e) => setDate(e.target.value)}
             />
             <input
-                type="text"
+                type="time"
                 placeholder="Tijd"
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
             />
-            <input
-                type="text"
-                placeholder="Service"
-                value={service}
-                onChange={(e) => setService(e.target.value)}
-            />
+            <select value={service} onChange={(e) => setService(e.target.value)}>
+                <option value="">Selecteer een service</option>
+                <option value="knippen">Knippen</option>
+                <option value="fade">Fade</option>
+                <option value="baard">Baard</option>
+            </select>
             <button type="submit">Toevoegen</button>
         </form>
     );

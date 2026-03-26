@@ -16,9 +16,9 @@ const appointmentSchema = new Schema({
   service: {
     type: String,
     required: true,
-    enum: ['knip', 'fade', 'baard']
+    enum: ['knippen', 'fade', 'baard']
   },
-    userId: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'User'

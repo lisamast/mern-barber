@@ -2,7 +2,7 @@ function DeleteAppointment({ appointmentId, appointmentTitle, refreshAppointment
   
   const handleDelete = async () => {
     // Bevestiging vragen
-    if (!confirm(`Weet je zeker dat je "${appointmentTitle}" wilt verwijderen?`)) {
+    if (!confirm(`Weet je zeker dat je "${appointmentTitle}" wilt annuleren?`)) {
       return;
     }
 
@@ -20,7 +20,7 @@ function DeleteAppointment({ appointmentId, appointmentTitle, refreshAppointment
 
       if (response.ok) {
         console.log('Afspraak verwijderd!', data);
-        refreshWorkouts();
+        refreshAppointments();
         // Verwijder uit UI of refresh lijst
       } else {
         console.error('Error:', data.error);
@@ -32,7 +32,7 @@ function DeleteAppointment({ appointmentId, appointmentTitle, refreshAppointment
 
   return (
     <button onClick={handleDelete}>
-      Verwijderen
+      Afspraak annuleren
     </button>
   );
 }

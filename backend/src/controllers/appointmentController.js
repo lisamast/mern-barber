@@ -1,12 +1,13 @@
-import Workout from '../models/Appointment.js';
+import Appointment from '../models/Appointment.js';
 import mongoose from 'mongoose';
 
 // GET alle appointments
 export const getAllAppointments = async (req, res) => {
+  // console.log('getAllAppointments called');
   try {
     // 1. Haal alle appointments op
     // 2. Sorteer: nieuwste eerst
-    const appointments = await Workout.find({userId: req.user._id}).sort({ createdAt: -1 });
+    const appointments = await Appointment.find({userId: req.user._id}).sort({ createdAt: -1 });
     
     // 3. Stuur terug
     res.status(200).json(appointments);
@@ -28,7 +29,7 @@ export const getAppointmentById = async (req, res) => {
 
   try {
     // 3. Zoek appointment met dit ID
-    const appointment = await Workout.findById(id);
+    const appointment = await Appointment.findById(id);
 
     // 4. Bestaat niet? Stuur 404
     if (!appointment) {
@@ -49,7 +50,7 @@ export const createAppointment = async (req, res) => {
 
   try {
     // 2. Maak appointment in database
-    const appointment = await Workout.create({ date, time, service, userId: req.user._id });
+    const appointment = await Appointment.create({ date, time, service, userId: req.user._id });
 
     // 3. Stuur terug
     res.status(201).json(appointment);
@@ -69,7 +70,7 @@ export const updateAppointment = async (req, res) => {
   }
 
   try {
-    const appointment = await Workout.findOneAndUpdate(
+    const appointment = await Appointment.findOneAndUpdate(
       { _id: id, userId: req.user._id }, 
       { ...req.body },
       { new: true }
@@ -95,7 +96,7 @@ export const deleteAppointment = async (req, res) => {
   }
 
   try {
-    const appointment = await Workout.findOneAndDelete({ 
+    const appointment = await Appointment.findOneAndDelete({ 
       _id: id, 
       userId: req.user._id
     });
