@@ -62,9 +62,9 @@ function UpdateAppointment({ appointmentId, currentDate, currentTime, currentSer
       />
       <select value={service} onChange={(e) => setService(e.target.value)}>
         <option value="">Selecteer een service</option>
-        <option value="knippen">Knippen</option>
-        <option value="fade">Fade</option>
-        <option value="baard">Baard</option>
+        <option value="knippen">Knip - €25 - Standaard haarknip</option>
+        <option value="fade">Fade - €30 - Fade haircut</option>
+        <option value="baard">Baard - €15 - Baard trimmen</option>
       </select>
       <button type="submit">Aanpassen</button>
     </form>
